@@ -20,6 +20,22 @@ Executed a structured security assessment against a local OWASP crAPI deployment
 - Docker
 - manual API testing
 
+## Findings Summary
+Built only from the observations documented in the Steps below. The objective cites eight consolidated findings, but ten distinct observations are listed here. TODO (author): confirm the consolidation, severities and fixes.
+
+| ID | Issue | OWASP category | Severity | Fix | Evidence |
+|---|---|---|---|---|---|
+| CR-01 | Broken object-level authorization: changing user ID 8 to 3 returns another user's data | OWASP API1:2023 BOLA | TBD by author | TBD by author | Ref 3 |
+| CR-02 | Unsigned JWT (`alg: none`, signature removed) accepted by the API | OWASP API2:2023 Broken Authentication | TBD by author | TBD by author | Refs 4-7 |
+| CR-03 | No account lockout or effective throttling on repeated invalid logins | OWASP API4:2023 Unrestricted Resource Consumption | TBD by author | TBD by author | Refs 8-9 |
+| CR-04 | Exposed MailHog message API (`/api/v2/messages`) reveals mailbox data, including a one-time password | OWASP API8:2023 Security Misconfiguration | TBD by author | TBD by author | Refs 10, 20 |
+| CR-05 | SQL payload accepted and reflected in community post content (weak input validation) | OWASP A03:2021 Injection | TBD by author | TBD by author | Refs 11-12 |
+| CR-06 | NoSQL-style `$regex` payload on coupon validation returns a valid coupon | OWASP A03:2021 Injection | TBD by author | TBD by author | Refs 13-14 |
+| CR-07 | Verbose Spring validation error discloses backend implementation details | OWASP API8:2023 Security Misconfiguration | TBD by author | TBD by author | Ref 15 |
+| CR-08 | `/.env` on port 8888 exposes environment variables and database configuration | OWASP API8:2023 Security Misconfiguration | TBD by author | TBD by author | Ref 16 |
+| CR-09 | Community posts endpoint exposes other users' author details | OWASP API3:2023 Broken Object Property Level Authorization | TBD by author | TBD by author | Ref 17 |
+| CR-10 | Shop orders are enumerable: `/orders/1` and `/orders/5` return other customers' and admin order/card metadata | OWASP API1:2023 BOLA | TBD by author | TBD by author | Refs 18-19 |
+
 ## Steps
 
 *Ref 1: Gobuster enumerates the crAPI host on 127.0.0.1:9000 and identifies live paths such as /health returning HTTP 200.*
